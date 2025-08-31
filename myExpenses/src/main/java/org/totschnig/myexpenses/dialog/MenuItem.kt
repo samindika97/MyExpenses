@@ -181,7 +181,7 @@ sealed class MenuItem(
     data object CustomAction : MenuItem(
     R.id.CUSTOM_ACTION_COMMAND, // Add this ID to your R file
     R.string.menu_custom_action, // Add this string to your resources
-    android.R.drawable.ic_menu_add // Add this drawable to your resources
+    android.R.drawable.ic_menu_add   // Add this drawable to your resources
 )
 
     @GenSealedEnum
