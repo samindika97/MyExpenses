@@ -187,4 +187,6 @@ sealed class MenuItem(
             get() = values.filter { it.isEnabledByDefault }
     }
     
+    // In BaseMyExpenses.kt or MenuItem.kt or a shared constants file
+    const val CUSTOM_ACTION_COMMAND = 9999 // Use a unique value not in use
 }

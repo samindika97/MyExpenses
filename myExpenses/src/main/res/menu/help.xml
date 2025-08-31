@@ -21,4 +21,10 @@
         android:orderInCategory="50"
         android:title="@string/menu_help"
         app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_insert_sample_data"
+        android:title="@string/action_insert_sample_data"
+        android:orderInCategory="100"
+        android:showAsAction="never" />
 </menu>
