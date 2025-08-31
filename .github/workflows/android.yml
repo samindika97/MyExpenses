@@ -33,11 +33,10 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew assembleDebug -x test -x lint
 
-    # Fast build - skip tests and lint
-    - name: Build APK
-      run: ./gradlew assembleDebug -x test -x lint --no-daemon --parallel
-    
-    # Upload APK for download (v4 - current version)
+    # Debugging step to list the contents of the build folder
+    - name: List build outputs
+      run: ls -R myExpenses/build/
+
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
