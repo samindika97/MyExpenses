@@ -483,13 +483,13 @@ abstract class BaseMyExpenses : LaunchActivity(), OnDialogResultListener, Contri
             R.id.CUSTOM_ACTION_COMMAND -> {
                 currentAccount?.let { account ->
                     org.totschnig.myexpenses.util.SampleDataHelper.insertSampleTransactions(
-                        contentResolver, 
-                        account.id, 
+                        contentResolver,
+                        account.id,
                         account.currencyUnit
                     )
                 }
                 true
-}
+            }
 
             else -> handleGrouping(item) ||
                     handleSortDirection(item) ||
