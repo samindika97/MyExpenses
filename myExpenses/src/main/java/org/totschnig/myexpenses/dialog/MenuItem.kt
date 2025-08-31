@@ -13,6 +13,9 @@ import org.totschnig.myexpenses.R
 import org.totschnig.myexpenses.activity.BaseActivity
 import org.totschnig.myexpenses.util.TextUtils
 
+  // In BaseMyExpenses.kt or MenuItem.kt or a shared constants file
+    const val CUSTOM_ACTION_COMMAND = 9999 // Use a unique value not in use
+
 @Parcelize
 @Stable
 sealed class MenuItem(
@@ -178,7 +181,7 @@ sealed class MenuItem(
     data object CustomAction : MenuItem(
     R.id.CUSTOM_ACTION_COMMAND, // Add this ID to your R file
     R.string.menu_custom_action, // Add this string to your resources
-    R.drawable.ic_custom_action // Add this drawable to your resources
+    android.R.drawable.ic_menu_add // Add this drawable to your resources
 )
 
     @GenSealedEnum
@@ -187,6 +190,5 @@ sealed class MenuItem(
             get() = values.filter { it.isEnabledByDefault }
     }
     
-    // In BaseMyExpenses.kt or MenuItem.kt or a shared constants file
-    const val CUSTOM_ACTION_COMMAND = 9999 // Use a unique value not in use
+  
 }
