@@ -13,7 +13,7 @@ public class SampleDataHelper {
         Transaction transaction = new Transaction();
 
         // Set sample data fields
-        transaction.setAmount(new Money(1000, Currency.getInstance("USD"))); // $10.00
+        transaction.setAmount(new Money(Currency.getInstance("USD"), 1000L)); // $10.00 (1000 cents)
         transaction.setPayee("Sample Payee");
         transaction.setComment("This is a sample transaction");
         transaction.setDate(System.currentTimeMillis() / 1000); // seconds since epoch
@@ -27,7 +27,7 @@ public class SampleDataHelper {
     public static void insertSampleTransactions(ContentResolver contentResolver) {
         for (int i = 0; i < 5; i++) {
             Transaction transaction = new Transaction();
-            transaction.setAmount(new Money(500 + i * 100, Currency.getInstance("USD")));
+            transaction.setAmount(new Money(Currency.getInstance("USD"), 500L + i * 100L)); // $5.00, $6.00, $7.00, etc.
             transaction.setPayee("Sample Payee #" + (i + 1));
             transaction.setComment("Sample transaction " + (i + 1));
             transaction.setDate(System.currentTimeMillis() / 1000 - (i * 86400)); // Days ago
