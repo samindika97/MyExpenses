@@ -38,8 +38,9 @@ jobs:
       run: ./gradlew assembleDebug -x test -x lint --no-daemon --parallel
     
     # Upload APK for download (v4 - current version)
-    - name: Upload APK
-      uses: actions/upload-artifact@v4
-      with:
-        name: app-debug-apk
-        path: myExpenses/build/outputs/apk/debug/*.apk
+- name: Upload APK
+  uses: actions/upload-artifact@v4
+  with:
+    name: app-debug-apk
+    path: app/build/outputs/apk/debug/*.apk
+
