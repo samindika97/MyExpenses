@@ -34,8 +34,13 @@ jobs:
       run: ./gradlew assembleDebug -x test -x lint
 
     # Debugging step to list the contents of the build folder
-    - name: List build outputs
-      run: ls -R myExpenses/build/
+    - name: Find APK files
+      run: |
+        echo "Looking for APK files..."
+        find . -name "*.apk" -type f
+        echo "Build outputs structure:"
+        ls -la myExpenses/build/outputs/ || echo "outputs folder not found"
+        ls -la myExpenses/build/outputs/apk/ || echo "apk folder not found"
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
