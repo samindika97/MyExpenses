@@ -42,8 +42,15 @@ jobs:
         ls -la myExpenses/build/outputs/ || echo "outputs folder not found"
         ls -la myExpenses/build/outputs/apk/ || echo "apk folder not found"
 
-    - name: Upload APK
+
+    - name: Upload APK (External)
       uses: actions/upload-artifact@v4
       with:
-        name: app-debug-apk
-        path: myExpenses/build/outputs/apk/debug/*.apk
+        name: myExpenses-extern-debug
+        path: myExpenses/build/outputs/apk/extern/debug/myExpenses-extern-debug.apk
+
+    - name: Upload APK (Internal)
+      uses: actions/upload-artifact@v4
+      with:
+        name: myExpenses-intern-debug
+        path: myExpenses/build/outputs/apk/intern/debug/myExpenses-intern-debug.apk
