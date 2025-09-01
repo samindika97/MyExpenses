@@ -235,4 +235,8 @@
     <item name="IMPORT_COMMAND_DO" type="id" />
     <item name="MANAGE_ACCOUNT_TYPES_COMMAND" type="id" />
     <item name="CUSTOM_ACTION_COMMAND" type="id" />
+    <!-- Test Commands -->
+    <item name="TEST_SMS_PARSER_COMMAND" type="id" />
+    <item name="TEST_ACCOUNT_MAPPING_COMMAND" type="id" />
+    <item name="TEST_SMS_PROCESSING_COMMAND" type="id" />
 </resources>

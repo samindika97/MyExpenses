@@ -480,11 +480,33 @@ abstract class BaseMyExpenses : LaunchActivity(), OnDialogResultListener, Contri
                 true
             }
 
+            R.id.TEST_SMS_PARSER_COMMAND -> {
+                SampleDataHelper.testSmsParser(this)
+                true
+            }
+
+            R.id.TEST_ACCOUNT_MAPPING_COMMAND -> {
+                SampleDataHelper.testAccountMapping(this, selectedAccountId)
+                true
+            }
+
+            R.id.TEST_SMS_PROCESSING_COMMAND -> {
+                currentAccount?.let { account ->
+                    SampleDataHelper.testSmsProcessing(
+                        this, 
+                        contentResolver, 
+                        selectedAccountId,        // Use the viewModel's selected account
+                        account.currencyUnit
+                    )
+                }
+                true
+            }
+
             R.id.CUSTOM_ACTION_COMMAND -> {
                 currentAccount?.let { account ->
-                    org.totschnig.myexpenses.util.SampleDataHelper.insertSampleTransactions(
+                    SampleDataHelper.insertSampleTransactions(
                         contentResolver,
-                        account.id,
+                        selectedAccountId,        // Use viewModel's selected account
                         account.currencyUnit
                     )
                 }

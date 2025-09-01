@@ -182,7 +182,25 @@ sealed class MenuItem(
     R.id.CUSTOM_ACTION_COMMAND, // Add this ID to your R file
     R.string.menu_custom_action, // Add this string to your resources
     android.R.drawable.ic_menu_add   // Add this drawable to your resources
-)
+    )
+
+    data object TestSmsParser : MenuItem(
+    R.id.TEST_SMS_PARSER_COMMAND,
+    R.string.test_sms_parser,
+    android.R.drawable.ic_menu_info_details
+    )
+
+    data object TestAccountMapping : MenuItem(
+        R.id.TEST_ACCOUNT_MAPPING_COMMAND, 
+        R.string.test_account_mapping,
+        android.R.drawable.ic_menu_manage
+    )
+
+    data object TestSmsProcessing : MenuItem(
+        R.id.TEST_SMS_PROCESSING_COMMAND,
+        R.string.test_sms_processing, 
+        android.R.drawable.ic_menu_send
+    )
 
     @GenSealedEnum
     companion object {
