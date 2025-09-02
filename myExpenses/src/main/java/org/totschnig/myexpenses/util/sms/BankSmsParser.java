@@ -2,6 +2,15 @@
 /**
  * Base class for bank-specific SMS parsers
  */
+
+package org.totschnig.myexpenses.util.sms;
+
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+import java.util.Locale;
+
+
 public abstract class BankSmsParser {
     protected String bankName;
     protected String senderPattern;

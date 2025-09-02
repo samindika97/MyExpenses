@@ -1,6 +1,16 @@
 /**
  * Main SMS Transaction Processor
  */
+
+package org.totschnig.myexpenses.util.sms;
+
+import android.content.Context;
+import org.totschnig.myexpenses.model.Account;
+import org.totschnig.myexpenses.model.Transaction;
+import org.totschnig.myexpenses.model.Money;
+import java.util.Map;
+
+
 public class SmsTransactionProcessor {
     private SmsTransactionParser parser;
     private SmsAccountMapper accountMapper;

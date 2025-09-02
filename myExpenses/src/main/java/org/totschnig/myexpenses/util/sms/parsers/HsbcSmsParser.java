@@ -1,6 +1,17 @@
+
 /**
  * HSBC SMS Parser
  */
+
+package org.totschnig.myexpenses.util.parsers.sms;
+
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+import java.util.Locale;
+
 public class HsbcSmsParser extends BankSmsParser {
     
     // HSBC SMS Pattern

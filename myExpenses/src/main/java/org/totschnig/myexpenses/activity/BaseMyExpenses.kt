@@ -485,34 +485,6 @@ abstract class BaseMyExpenses : LaunchActivity(), OnDialogResultListener, Contri
                 true
             }
 
-            R.id.TEST_ACCOUNT_MAPPING_COMMAND -> {
-                SampleDataHelper.testAccountMapping(this, selectedAccountId)
-                true
-            }
-
-            R.id.TEST_SMS_PROCESSING_COMMAND -> {
-                currentAccount?.let { account ->
-                    SampleDataHelper.testSmsProcessing(
-                        this, 
-                        contentResolver, 
-                        selectedAccountId,        // Use the viewModel's selected account
-                        account.currencyUnit
-                    )
-                }
-                true
-            }
-
-            R.id.CUSTOM_ACTION_COMMAND -> {
-                currentAccount?.let { account ->
-                    SampleDataHelper.insertSampleTransactions(
-                        contentResolver,
-                        selectedAccountId,        // Use viewModel's selected account
-                        account.currencyUnit
-                    )
-                }
-                true
-            }
-
             else -> handleGrouping(item) ||
                     handleSortDirection(item) ||
                     super.onOptionsItemSelected(item)

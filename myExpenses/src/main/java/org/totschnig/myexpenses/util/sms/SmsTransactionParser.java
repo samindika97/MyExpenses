@@ -1,6 +1,12 @@
 /**
  * Main SMS Transaction Parser - handles multiple banks
  */
+
+package org.totschnig.myexpenses.util.sms;
+
+import java.util.List;
+import java.util.ArrayList;
+
 public class SmsTransactionParser {
     private java.util.List<BankSmsParser> parsers;
     
