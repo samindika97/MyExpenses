@@ -7,6 +7,9 @@ package org.totschnig.myexpenses.util.sms;
 import java.util.List;
 import java.util.ArrayList;
 
+import org.totschnig.myexpenses.util.sms.parsers.HsbcSmsParser;
+
+
 public class SmsTransactionParser {
     private java.util.List<BankSmsParser> parsers;
     
