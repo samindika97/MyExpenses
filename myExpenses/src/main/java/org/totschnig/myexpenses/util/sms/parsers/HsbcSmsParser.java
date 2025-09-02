@@ -5,6 +5,9 @@
 
 package org.totschnig.myexpenses.util.sms.parsers;
 
+import org.totschnig.myexpenses.util.sms.BankSmsParser;
+import org.totschnig.myexpenses.util.sms.ParsedSmsTransaction;
+
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import java.util.Date;
