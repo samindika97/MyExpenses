@@ -3,7 +3,7 @@
  * HSBC SMS Parser
  */
 
-package org.totschnig.myexpenses.util.parsers.sms;
+package org.totschnig.myexpenses.util.sms.parsers;
 
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
