@@ -13,6 +13,7 @@ import org.totschnig.myexpenses.model.CurrencyUnit;
 import org.totschnig.myexpenses.provider.TransactionProvider;
 import org.totschnig.myexpenses.provider.DatabaseConstants;
 
+import java.util.Currency;
 import java.util.Map;
 
 import static org.totschnig.myexpenses.provider.DatabaseConstants.*;
