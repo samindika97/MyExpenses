@@ -12,6 +12,8 @@ import org.totschnig.myexpenses.util.sms.SmsAccountMapper;
 
 public class SampleDataHelper {
 
+    private static final String TAG = "SmsProcessorTestx";
+
     // Your existing sample transaction methods...
     public static void insertSampleTransactions(ContentResolver contentResolver, long accountId, CurrencyUnit currencyUnit) {
         for (int i = 0; i < 5; i++) {
@@ -25,6 +27,7 @@ public class SampleDataHelper {
 
     // NEW: Test SMS parsing without real SMS
     public static void testSmsParser(Context context) {
+        Log.d(TAG, "Starting transaction creation for account: ");
         SmsTransactionParser parser = new SmsTransactionParser();
         
         // Test SMS samples
