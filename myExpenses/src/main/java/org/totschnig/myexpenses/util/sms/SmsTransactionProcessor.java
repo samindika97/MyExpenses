@@ -72,49 +72,54 @@ public class SmsTransactionProcessor {
     /**
      * Create transaction from parsed SMS data
      */
-    private boolean createTransactionFromSms(ParsedSmsTransaction parsed, long accountId) {
-        try {
-            Log.d(TAG, "Creating transaction for account ID: " + accountId);
-            
-            // Get account currency from database
-            String currency = getAccountCurrency(accountId);
-            if (currency == null) {
-                Log.e(TAG, "Could not find account with ID: " + accountId);
-                return false;
-            }
-            
-            Log.d(TAG, "Account currency: " + currency);
-            
-            // Create currency unit
-            CurrencyUnit currencyUnit = CurrencyUnit.getInstance(currency);
-            
-            // Create transaction
-            Transaction transaction = Transaction.getNewInstance(accountId, currencyUnit);
-            
-            // Set amount (negative for debit, positive for credit)
-            long amount = parsed.isDebit ? -parsed.amountMinor : parsed.amountMinor;
-            transaction.setAmount(new Money(currencyUnit, amount));
-            
-            // Set other fields
-            transaction.setPayee(parsed.merchant);
-            transaction.setComment("Auto-imported from SMS: " + parsed.sender);
-            
-            // Set date if parsed successfully
-            if (parsed.transactionDate != null) {
-                transaction.setDate(parsed.transactionDate.getTime() / 1000);
-            }
-            
-            // Save transaction
-            transaction.save(context.getContentResolver());
-            
-            Log.d(TAG, "Transaction created successfully");
-            return true;
-            
-        } catch (Exception e) {
-            Log.e(TAG, "Error creating transaction", e);
+private boolean createTransactionFromSms(ParsedSmsTransaction parsed, long accountId) {
+    try {
+        Log.d(TAG, "Creating transaction for account ID: " + accountId);
+        
+        // Get account currency from database
+        String currencyCode = getAccountCurrency(accountId);
+        if (currencyCode == null) {
+            Log.e(TAG, "Could not find account with ID: " + accountId);
             return false;
         }
+        
+        Log.d(TAG, "Account currency: " + currencyCode);
+        
+        // Get Java Currency instance to extract symbol and fraction digits
+        Currency javaCurrency = Currency.getInstance(currencyCode);
+        String currencySymbol = javaCurrency.getSymbol();
+        int fractionDigits = javaCurrency.getDefaultFractionDigits();
+        
+        // Create currency unit with all required parameters
+        CurrencyUnit currencyUnit = new CurrencyUnit(currencyCode, currencySymbol, fractionDigits);
+        
+        // Create transaction
+        Transaction transaction = Transaction.getNewInstance(accountId, currencyUnit);
+        
+        // Set amount (negative for debit, positive for credit)
+        long amount = parsed.isDebit ? -parsed.amountMinor : parsed.amountMinor;
+        transaction.setAmount(new Money(currencyUnit, amount));
+        
+        // Set other fields
+        transaction.setPayee(parsed.merchant);
+        transaction.setComment("Auto-imported from SMS: " + parsed.sender);
+        
+        // Set date if parsed successfully
+        if (parsed.transactionDate != null) {
+            transaction.setDate(parsed.transactionDate.getTime() / 1000);
+        }
+        
+        // Save transaction
+        transaction.save(context.getContentResolver());
+        
+        Log.d(TAG, "Transaction created successfully");
+        return true;
+        
+    } catch (Exception e) {
+        Log.e(TAG, "Error creating transaction", e);
+        return false;
     }
+}
     
     /**
      * Get account currency from database using ContentResolver

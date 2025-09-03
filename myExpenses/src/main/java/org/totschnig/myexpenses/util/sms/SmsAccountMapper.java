@@ -2,7 +2,6 @@ package org.totschnig.myexpenses.util.sms;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import org.totschnig.myexpenses.model.Account;
 import org.totschnig.myexpenses.model.Transaction;
 import org.totschnig.myexpenses.model.Money;
 import org.totschnig.myexpenses.util.sms.ParsedSmsTransaction;
